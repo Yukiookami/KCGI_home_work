@@ -1,0 +1,75 @@
+<!--
+ * @Author: zxy
+ * @Date: 2021-11-02 13:24:52
+ * @LastEditTime: 2021-11-12 20:33:10
+ * @FilePath: /web3/6/src6/translate.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<style>
+		#translate>thead th {
+			background-color: lightblue;
+		}
+
+		#translate td.container {
+			vertical-align: top;
+			width: 200px;
+			overflow: auto;
+		}
+
+		#translate td.container>* {
+			border: 1px solid black;
+			width: 195px;
+			height: 200px;
+			font-size: large;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<h1>HTMLの表示テスト</h1>
+	<table id="translate">
+		<thead>
+			<tr>
+				<th>ブラウザでの表示</th>
+				<td></td>
+				<th>HTML文字列</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="container">
+					<div id="html-sec">
+						<ol>
+							<li>あ</li>
+							<li>い</li>
+						</ol>
+					</div>
+				</td>
+				<td>
+					<button id="h2b">&lt;&lt;</button><br />
+					<button id="b2h">&gt;&gt;</button>
+				</td>
+				<td class="container"><textarea id="string-sec"s></textarea></td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		// 以下，ボタン（#b2h, #h2b）のクリックに対するコールバック関数を追加する。
+		$('#h2b').on('click', () => {
+			$('#html-sec').html($('#string-sec').val())
+		})
+
+		$('#b2h').on('click', () => {
+			$('#string-sec').val($('#html-sec').html())
+		})
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+ul {
+	list-style-type:	none;
+	font-size: xx-large;
+	width: 320px;
+}
+.highlight {
+	background-color:	orange;
+	color:				white;
+}
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+<script>
+/**
+ * ラジオボタンがチェックされたら呼ばれる関数。
+ * class="highlight" を動的に付けたり外したりして，チェックされた
+ * 項目を強調表示してください。
+ */
+function selectOne(){
+	// alert("clicked!");
+	// $(":checked").parent().addClass("highlight");
+	// $(":checked").attr("type", "checkbox");
+	
+	// チェックされたボタンを含む li 要素を強調する。
+	$("li").removeClass("highlight");
+	$("li:has(:checked)")
+		.addClass("highlight")
+		// .attr("style", "border:1px solid black")
+		.css("border", "1px solid black");
+}
+</script>
+</head>
+<body>
+<h1>あなたの出身地は？</h1>
+<form>
+<ul onClick="selectOne()">
+<li><input type="radio" name="menu"/> <span>北海道</span> </li>
+<li><input type="radio" name="menu"/> <span>東北</span> </li>
+<li><input type="radio" name="menu"/> <span>関東</span> </li>
+<li><input type="radio" name="menu"/> <span>北陸</span> </li>
+<li><input type="radio" name="menu"/> <span>中部</span> </li>
+<li><input type="radio" name="menu"/> <span>近畿</span> </li>
+<li><input type="radio" name="menu"/> <span>山陽</span> </li>
+<li><input type="radio" name="menu"/> <span>山陰</span> </li>
+<li><input type="radio" name="menu"/> <span>四国</span> </li>
+<li><input type="radio" name="menu"/> <span>九州・沖縄</span> </li>
+</ul>
+</form>
+</body>
+</html>

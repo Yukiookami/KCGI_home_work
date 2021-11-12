@@ -1,0 +1,105 @@
+<!--
+ * @Author: zxy
+ * @Date: 2021-11-12 19:22:38
+ * @LastEditTime: 2021-11-12 19:31:41
+ * @FilePath: /web3/6/src6/movelist.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<style>
+		#table1 td.container {
+			vertical-align: top;
+			width: 150px;
+			overflow: auto;
+		}
+
+		#table1 td.container ol {
+			height: 10em;
+		}
+
+		.highlight {
+			background-color: orange;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+	</script>
+	<script>
+		/**
+		 * A→Bのボタンを押すとリストAの先頭がリストBの
+		 * 最後に移動する
+		 */
+		const moveAtoB = () => {
+			var li_tag = $("#listA > li:first"); //<ol id="listA">の最初の子供の<li>..<li>
+			$("#listB").append(li_tag); //<ol id "listB">にli_tagを最後の子供に追加、移動
+		}
+		/**
+		 * A←Bのボタンを押すとリストBの先頭がリストAの
+		 * 最後に移動する
+		 */
+		const moveBtoA = () => {
+			var li_tag = $("#listB > li:first"); //<ol id="listB">の最初の子供の<li>..<li>
+			$("#listA").append(li_tag); //<ol id "listA">にli_tagを最後の子供に追加、移動
+		}
+
+		const addC = () => {
+			if ($('#in').val()) {
+				let item = $(`<li>${$('#in').val()}</li>`);
+				$('#listA').append(item)
+				$('#in').val('') 
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+	<h1>リスト項目の移動</h1>
+	<table id="table1" border="1">
+		<tbody>
+			<tr>
+				<td class="container">
+					<h3>リストA</h3>
+					<ol id="listA">
+						<li>はまち</li>
+						<li>たい</li>
+						<li>いくら</li>
+						<li>うに</li>
+						<li>こはだ</li>
+						<li>げそ</li>
+					</ol>
+				</td>
+				<td>
+					<button id="AtoBbtn">A→B</button><br>
+					<button id="BtoAbtn">A←B</button>
+				</td>
+				<td class="container">
+					<h3>リストB</h3>
+					<ol id="listB"></ol>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" id="in">
+				</td>
+				<td><button id="addBtn">追加</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		$("#AtoBbtn").on("click", moveAtoB);
+		$("#BtoAbtn").on("click", moveBtoA);
+		$("ol").on("click", "li", function () {
+			$(this).addClass("highlight");
+		});
+		let item = $("<li>いくら</li>");
+		$("#listA").append(item);
+
+		$('#addBtn').on('click', addC);
+	</script>
+</body>
+
+</html>

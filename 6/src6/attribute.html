@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+#target {
+	width:	320px;
+	height:	240px;
+	font-size:	xx-large;
+	background-color:	red;
+	border:	1px solid black;
+}
+#target.blue {
+	background-color:	blue;
+}
+#action {
+	font-size:	larger;
+}
+#action input, #action button {
+	font-size:	100%;
+}
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+<script>
+/**
+ * id="target"のdiv要素に対するjQueryメソッドを実行する
+ */
+function call(){
+	var str = $("#method").val();
+	eval('$("#return").empty().text($("#target").'+str+")");
+}
+</script>
+</head>
+<body>
+<div id="target">&lt;div id="target"/&gt;</div>
+<hr>
+<div id="action">
+<!-- ここに属性変更等のためのメソッド呼び出しの式を書いて「実行」ボタンを押す -->
+$("#target").<input type="text" id="method" size="25">
+<button type="button" onClick="call()">実行</button>
+<br>
+戻り値：<span id="return"></span>
+</div>
+</body>
+</html>
