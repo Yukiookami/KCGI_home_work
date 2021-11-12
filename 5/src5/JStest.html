@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+h1.highlight {
+	border : 1px solid black;
+}
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+<script>
+function highlight(){
+	$("h1").addClass("highlight").hide().fadeIn();
+	/*
+	var h1All = document.getElementsByTagName("h1");
+	for(var i=0; i<h1All.length; i++){
+		var h1 = h1All.item(i);
+		h1.setAttribute("class", "highlight");
+	}
+	*/
+}
+</script>
+</head>
+<body>
+<hr>
+<h1>JavaScript</h1>
+<h1>PHP</h1>
+<h1>HTML</h1>
+<hr>
+<button onClick="highlight()">強調（Emphasis）</button>
+</body>
+</html>

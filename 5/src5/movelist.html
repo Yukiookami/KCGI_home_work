@@ -1,0 +1,111 @@
+<!--
+ * @Author: zxy
+ * @Date: 2021-10-26 17:08:42
+ * @LastEditTime: 2021-10-29 21:27:05
+ * @FilePath: /web3/5/src5/movelist.html
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+#table1 td.container {
+	vertical-align:top;
+	width:150px;
+	overflow:auto;
+}
+#table1 td.container ol {
+	height:10em;
+}
+
+.highlight {
+	background-color:	orange;
+	color:				white;
+	list-style-position: inside
+}
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<h1>リスト項目の移動</h1>
+<table id="table1" border="1">
+<tbody>
+<tr>
+	<td class="container">
+		<h3>リストA</h3>
+		<ol id="listA">
+			<li>はまち</li>
+			<li>たい</li>
+			<li>いくら</li>
+			<li>うに</li>
+			<li>こはだ</li>
+			<li>げそ</li>
+		</ol>
+	</td>
+	<td>
+		<button id="tagA">A→B</button><br>
+		<button id="tagB">A←B</button>
+	</td>
+	<td class="container">
+		<h3>リストB</h3>
+		<ol id="listB"></ol>
+	</td>
+</tr>
+</tbody>
+</table>
+<script>
+	let tagA = $('#tagA')
+	let tagB = $('#tagB')
+	let lis = $('li')
+
+	/**
+	 * A→Bのボタンを押すとリストAの先頭がリストBの
+	 * 最後に移動する
+	 */
+	function moveAtoB(){
+		let tag = $("#listA > li:first")
+		$('#listB').append(tag)
+	}
+	/**
+	 * A←Bのボタンを押すとリストBの先頭がリストAの
+	 * 最後に移動する
+	 */
+	function moveBtoA(){
+		let tag = $("#listB > li:first")
+		$('#listA').append(tag)
+	}
+
+	/**
+	 * @description: 色を追加
+	 * @param {*} e
+	 * @return {*}
+	 */	
+	const changeColor = (e) => {
+		let {ele} = e.target._params
+		$(ele).toggleClass('highlight')
+	}
+
+	tagA.on('click', moveAtoB)
+	tagB.on('click', moveBtoA)
+
+	Array.prototype.forEach.call(lis, ele => {
+		ele._params = {
+			ele
+		}
+		ele.addEventListener("click", changeColor)
+	})
+
+	window.onbeforeunload = () => {
+		Array.prototype.forEach.call(lis, ele => {
+		ele._params = {
+			ele
+		}
+		ele.removeEventListener("click", changeColor)
+	})
+	}
+</script>
+</body>
+</html>

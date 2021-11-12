@@ -1,0 +1,78 @@
+<!--
+ * @Author: zxy
+ * @Date: 2020-05-22 08:35:56
+ * @LastEditTime: 2021-10-22 21:16:37
+ * @FilePath: /web3/4/jquery_ex/selector.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>selector.html</title>
+	<style>
+		/* 要素の強調のためのCSS指定 */
+		.highlight {
+			background-color: lightblue;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.5.1/jquery.min.js"></script> -->
+	<script>
+		/**
+		 * セレクタで指定したDOM要素にclass="highlight"の属性を与える
+		 */
+		function highlight() {
+			$("*").removeClass("highlight"); // 前回実行時の選択を解除する
+			var str = $("#selector").val();
+			$(str).addClass("highlight");
+		}
+	</script>
+</head>
+
+<body>
+
+	<h1>KCGI Master Project</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>略称</th>
+				<th>指導教授</th>
+				<th>学生数</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>CRM</td>
+				<td>高　弘昇</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>DWH</td>
+				<td>寺下　陽一</td>
+				<td>4</td>
+			</tr>
+			<tr>
+				<td>ANM</td>
+				<td>植田　浩二</td>
+				<td>14</td>
+			</tr>
+			<tr>
+				<td>SCM</td>
+				<td>今井　恒雄</td>
+				<td>6</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<!-- ここにセレクタ文字列を入力し「強調」ボタンを押す -->
+	選択対象：<input type="text" size="30" id="selector" />
+	<button type="button" onclick="highlight()">強調</button>
+</body>
+
+</html>
+<!-- tr:nth-child(even)
+tr:last-child td
+tr>:nth-child(3)
+tr:contains(4) :nth-child(3)
+tr:contains(DWH) -->

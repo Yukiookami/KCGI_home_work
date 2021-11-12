@@ -1,0 +1,63 @@
+<!--
+ * @Author: zxy
+ * @Date: 2020-05-22 08:35:42
+ * @LastEditTime: 2021-10-29 16:47:50
+ * @FilePath: /web3/4/jquery_ex/attribute.html
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>attribute.html</title>
+<style type="text/css">
+#target {
+	width:	320px;
+	height:	240px;
+	font-size:	xx-large;
+	background-color:	red;
+	border:	1px solid black;
+}
+#target.blue {
+	background-color:	blue;
+}
+#action {
+	font-size:	larger;
+}
+#action input, #action button {
+	font-size:	100%;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script >
+/**
+ * id="target"のdiv要素に対するjQueryメソッドを実行する
+ */
+function call(){
+	var str = $("#method").val();
+	eval('$("#return").empty().text($("#target").'+str+")");
+}
+</script>
+</head>
+<body>
+<div id="target">&lt;div id="target"/&gt;</div>
+<hr>
+<div id="action">
+<!-- ここに属性変更等のためのメソッド呼び出しの式を書いて「実行」ボタンを押す -->
+$("#target").<input type="text" id="method" size="25">
+<button type="button" onclick="call()">実行</button>
+<br>
+戻り値：<span id="return"></span>
+</div>
+<div>
+<div>例：</div>
+<div>css("color","green")</div>
+</div>
+
+</body>
+</html>
+
+<!-- css("border", "5px solid cyan")
+css("width", "320px").css("height", "240px") css("width", "320px","height", "240px")
+css("display", "none")
+addClass("blue")
+removeClass("blue") -->

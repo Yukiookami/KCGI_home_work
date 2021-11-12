@@ -1,0 +1,38 @@
+<!--
+ * @Author: zxy
+ * @Date: 2017-10-03 10:19:16
+ * @LastEditTime: 2021-10-01 21:09:01
+ * @FilePath: /第一回/M21W0292/login.html
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>login</title>
+  <style>
+    form {
+      border: 1px solid black;
+      text-align: right;
+    }
+
+    .info-box {
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <form method="POST" action="check.php">
+    <table class="info-box">
+      <tr>
+        <td>ユーザID：</td>
+        <td><input type="text" name="userID"></td>
+      </tr> 
+      <tr>
+        <td>パスワード：</td>
+        <td><input type="password" name="password"></td>
+      </tr>
+    </table>
+    <button>ログイン</button>
+  </form>
+</body>
+</html>
